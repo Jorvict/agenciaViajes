@@ -10,6 +10,10 @@ import router from './routes/index.js';
 // Importamos el archivo de configuración de la DB
 import db from './config/db.js';
 
+// Importamos y leemos dotenv
+import dotenv from 'dotenv'
+dotenv.config()
+
 // Conectar la base de datos
 db.authenticate()
     .then( () => console.log('Base de datos conectada'))
@@ -22,7 +26,7 @@ const app = express();
 /*  El siguiente código lo que hace es asignar a port el puerto que nos
     asigne el site donde hagamos el deploy, en nuestro caso como aún
     estamos en desarrollo local y no deploy, lo asignará el puerto 4000 */
-const port = process.env.PORT || 4000;
+const port = process.env.DB_PORT || 4000;
 
 // Habilitar PUG
 app.set('view engine', 'pug');
