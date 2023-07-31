@@ -50,9 +50,6 @@ const paginaViajes = async (req, res) =>{
     // Consultar a la DB los viajes
     const viajes = await Viaje.findAll();
 
-    console.log(viajes)
-
-
     res.render('viajes', {
         pagina: 'Próximos viajes',
         viajes // Es igual a viajes:viajes

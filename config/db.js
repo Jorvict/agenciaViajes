@@ -1,5 +1,9 @@
 import Sequelize from 'sequelize';
 
+// Importamos y leemos dotenv
+import dotenv from 'dotenv'
+dotenv.config()
+
 /* 
     Creamos una instancia de sequelize, como primer argumento le pasamos
     la DB a la que nos queremos conectar. El segundo argumento es el nombre
@@ -7,9 +11,9 @@ import Sequelize from 'sequelize';
     password del gestior de DB (mysql), y el cuarto es un objeto con una serie 
     de configuraciones que van dentro de un objeto.
 */
-const db = new Sequelize('agenciaviajes', 'root', 'root', {
+const db = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
 
-    host: '127.0.0.1',
+    host: process.env.DB_HOST,
     port: '3306',
     dialect: 'mysql',
     define: {
