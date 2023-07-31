@@ -4,6 +4,8 @@ import Sequelize from 'sequelize';
 import dotenv from 'dotenv'
 dotenv.config()
 
+const op = Sequelize.Op
+
 /* 
     Creamos una instancia de sequelize, como primer argumento le pasamos
     la DB a la que nos queremos conectar. El segundo argumento es el nombre
@@ -24,7 +26,16 @@ const db = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.D
         min: 0,
         acquire: 30000,
         idle: 10000
-    }
+    },
+    operatorAliases: {
+        $and: op.and,
+        $or: op.or,
+        $eq: op.eq,
+        $gt: op.gt,
+        $lt: op.lt,
+        $lte: op.lte,
+        $like: op.like
+      }
 });
 
 export default db;
